@@ -1,33 +1,33 @@
 const tasks = [
   {
-    description: "Buy milk",
+    description: 'Buy milk',
     completed: false,
-    index: 2
+    index: 2,
   },
   {
-    description: "Walk the dog",
+    description: 'Walk the dog',
     completed: true,
-    index: 1
+    index: 1,
   },
   {
-    description: "Complete homework",
+    description: 'Complete homework',
     completed: false,
-    index: 3
+    index: 3,
   },
   {
-    description: "Call mom",
+    description: 'Call mom',
     completed: false,
-    index: 4
-  }
+    index: 4,
+  },
 ];
 
 function createTaskList() {
-  const taskList = document.getElementById("tasks");
-  //sort the tasks by index before populating the list
+  const taskList = document.getElementById('tasks');
+  // sort the tasks by index before populating the list
   tasks.sort((a, b) => a.index - b.index);
 
-  tasks.forEach(task => {
-    const taskItem = document.createElement("li");
+  tasks.forEach((task) => {
+    const taskItem = document.createElement('li');
     taskItem.className = 'tasks';
     taskItem.innerHTML = `
     <input type="checkbox">
@@ -35,15 +35,15 @@ function createTaskList() {
           <button class="options" type="options">
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </button>
-    `
+    `;
 
     if (task.completed) {
-      taskItem.classList.add("completed");
+      taskItem.classList.add('completed');
     }
 
     taskList.appendChild(taskItem);
   });
 }
 
-//call the createTaskList function on page load
+// call the createTaskList function on page load
 window.onload = createTaskList;
