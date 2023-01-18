@@ -128,7 +128,11 @@ Clone this repository to your desired folder:
 
 2.run: git clone git @ https://github.com/AyomipoMajek/To-Do-List
 
-2.Open the file in your code editor
+3.Open the file in your code editor
+
+4.Right click on the html code nd click open live server
+
+5.Right click on the live server page and click inspect.
 
 <!--
 Example commands:
