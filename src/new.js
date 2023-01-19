@@ -8,18 +8,21 @@ function renderTasks() {
     li.innerHTML = `
       <input type="checkbox" id="task${index}" ${task.completed ? "checked" : ""}>
       <label for="task${index}">${task.description}</label>
-      <button class="delete" onclick="deleteTask(${index})">
+      <button class="delete">
         <i class="fa-solid fa-times"></i>
       </button>
-      <button class="edit" onclick="editTask(${index})">
+      <button class="edit">
         <i class="fa-solid fa-pen"></i>
       </button>
     `;
     taskList.appendChild(li);
+    li.querySelector('.delete').addEventListener("click", () => deleteTask(index));
+    li.querySelector('.edit').addEventListener("click", () => editTask(index));
   });
 }
 
 function addTask(e) {
+  document.getElementById("form").addEventListener("submit", addTask);
   e.preventDefault();
   const input = document.querySelector("input");
   if (input.value === "") return alert("Please enter a task");
@@ -32,37 +35,37 @@ function addTask(e) {
   input.value = "";
   renderTasks();
   updateLocalStorage();
-
-  function deleteTask(index) {
-    tasks.splice(index, 1);
-    tasks.forEach((task, i) => task.index = i + 1);
-    renderTasks();
-    updateLocalStorage();
-  }
-  
-  function editTask(index) {
-    const input = document.createElement("input");
-    input.value = tasks[index].description;
-    input.classList.add("edit-input");
-    const li = taskList.children[index];
-    li.innerHTML = "";
-    li.appendChild(input);
-    input.focus();
-    input.addEventListener("blur", () => {
-      tasks[index].description = input.value;
-      renderTasks();
-      updateLocalStorage();
-    });
-  }
-  
-  function updateLocalStorage() {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }
-  
-  renderTasks();
-  document.getElementById("form").addEventListener("submit", addTask);
 }
 
+function deleteTask(index) {
+  li.querySelector('.delete').addEventListener("click", () => deleteTask(index));
+  tasks.splice(index, 1);
+  tasks.forEach((task, i) => task.index = i + 1);
+  renderTasks();
+  updateLocalStorage();
+}
 
+function editTask(index) {
+  li.querySelector('.edit').addEventListener("click", () => editTask(index));
+  const input = document.createElement("input");
+  input.value = tasks[index].description;
+  input.classList.add("edit-input");
+  const li = taskList.children[index];
+  li.innerHTML = "";
+  li.appendChild(input);
+  input.focus();
+  input.addEventListener("blur", () => {
+    tasks[index].description = input.value;
+    renderTasks();
+    updateLocalStorage();
+  });
+}
+
+function updateLocalStorage() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+renderTasks();
+document.getElementById("form").addEventListener("submit", addTask);
 
 export { renderTasks, addTask, deleteTask, editTask, updateLocalStorage }

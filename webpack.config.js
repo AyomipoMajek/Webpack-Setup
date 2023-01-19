@@ -1,12 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const { template } = require('lodash');
 
 module.exports = {
-  type: 'module',
   mode: 'development',
   entry: {
-    bundle: path.resolve(__dirname, './src/index.js'),
+    bundle: path.resolve(__dirname, './src/new.js'),
   },
   devServer: {
     static: './dist',
