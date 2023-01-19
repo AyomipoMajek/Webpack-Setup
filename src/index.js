@@ -1,4 +1,8 @@
-const tasks = [
+import './new.js';
+import './style.css';
+
+
+/*const tasks = [
   {
     description: 'Buy milk',
     completed: false,
@@ -46,4 +50,4 @@ function createTaskList() {
 }
 
 // call the createTaskList function on page load
-window.onload = createTaskList;
+window.onload = createTaskList; */

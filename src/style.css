@@ -57,6 +57,7 @@ form button {
   margin-right: 10px;
   border: none;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .formclass {
